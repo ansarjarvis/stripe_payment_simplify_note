@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 import stripeRouter from "./routes/stripe.js";
+import webhookRouter from "./routes/webhook.js";
 import Stripe from "stripe";
 
 /* configuration */
@@ -24,6 +25,7 @@ export let stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 /* routes */
 
 app.use("/create-checkout-session", stripeRouter);
+app.use("/webhook", webhookRouter);
 
 /* Database */
 let port = process.env.PORT || 8000;
