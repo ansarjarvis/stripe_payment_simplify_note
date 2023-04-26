@@ -1,7 +1,10 @@
-import express from "express";
+// import express from "express";
+// import bodyParser from "body-parser";
+// import { stripe } from "../app.js";
+let express = require("express");
+let stripe = require("../app");
+let bodyParser = require("body-parser");
 let Router = express.Router();
-import bodyParser from "body-parser";
-import { stripe } from "../app.js";
 
 Router.post(
   "/",
@@ -16,8 +19,7 @@ Router.post(
     // With signature verification:
     const payload = req.body;
     const sig = req.headers["stripe-signature"];
-    const endpointSecret =
-      "whsec_96298f84620bfff2d2959f2a1a9bbed2a7f9ef20d65055b1faba9364bc104110";
+    const endpointSecret = STRIPE_SECRET_KEY;
 
     let event;
 
@@ -46,4 +48,5 @@ Router.post(
   }
 );
 
-export default Router;
+// export default Router;
+module.exports = Router;
