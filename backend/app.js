@@ -14,7 +14,7 @@ let cors = require("cors");
 let helmet = require("helmet");
 let stripeRouter = require("./routes/stripe");
 let webhookRouter = require("./routes/webhook");
-let Stripe = require("stripe");
+// let Stripe = require("stripe");
 /* configuration */
 
 dotenv.config();
@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 /* Stripe Configuration */
-let stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
+// let stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 /* routes */
 
 app.use("/create-checkout-session", stripeRouter);
@@ -42,4 +42,4 @@ app.listen(8000, () => {
   console.log(`server is live at port ${port}`);
 });
 
-module.exports = stripe;
+// module.exports = stripe;

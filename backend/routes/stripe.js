@@ -2,9 +2,14 @@
 // import { stripe } from "../app.js";
 
 let express = require("express");
-let stripe = require("../app");
+let dotenv = require("dotenv");
+dotenv.config();
+
+// let stripe = require("../app");
 
 let Router = express.Router();
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // let storeItems = new Map([
 //   [1, { priceInRupees: 39900, name: "Yearly Subscription" }],

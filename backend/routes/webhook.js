@@ -2,9 +2,13 @@
 // import bodyParser from "body-parser";
 // import { stripe } from "../app.js";
 let express = require("express");
-let stripe = require("../app");
+// let stripe = require("../app");
+let dotenv = require("dotenv");
+dotenv.config();
 let bodyParser = require("body-parser");
 let Router = express.Router();
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 Router.post(
   "/",
